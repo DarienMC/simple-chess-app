@@ -12,6 +12,9 @@ class Game:
     state = GameState.IN_PROGRESS
     current_position = Position()
     moves = None
+    
+    def play(self):
+        pass
 
     def __init__(self, players):
         self.players = players
