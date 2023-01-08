@@ -1,5 +1,5 @@
 from enum import Enum
-import Position, Move
+import Position, Move, Player
 import numpy as np
 
 class GameState(Enum):
@@ -10,8 +10,8 @@ class GameState(Enum):
 
 class Game:
     state = GameState.IN_PROGRESS
-    current_position = Position( np., 0)
+    current_position = Position()
     moves = None
 
     def __init__(self, players):
-        pass
+        self.players = players
