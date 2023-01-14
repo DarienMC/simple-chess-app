@@ -27,13 +27,13 @@ def print_current_position_as_text():
     )
 
 
-def change_to_subsequent_position(move):
+def change_to_subsequent_position():
     return Position
 
 
 class Game:
     __state = GameState.IN_PROGRESS
-    __current_position = Position
+    __current_position = Position.Position
     __moves = None
 
     def __init__(self, players):
@@ -41,12 +41,12 @@ class Game:
 
     def play(self):
         while self.__state is GameState.IN_PROGRESS:
-            if self.__current_position.Position.get_legal_moves() is not None:
-                move = input(f'{self.__players[self.__current_position.Position.get_turn_index()]} to move: ')
-                change_to_subsequent_position(move)
+            if self.__current_position.get_legal_moves is not None:
+                move = input(f'{self.__players[self.__current_position.get_turn_index]} to move: ')
+                change_to_subsequent_position()
             else:
-                if self.__current_position.Position.get_in_check():
-                    if self.__current_position.Position.get_turn_index() is 0:
+                if self.__current_position.get_in_check:
+                    if self.__current_position.get_turn_index is 0:
                         self.__state = GameState.WHITE_WINS
                     else:
                         self.__state = GameState.BLACK_WINS

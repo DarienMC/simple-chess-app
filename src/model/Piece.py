@@ -184,6 +184,9 @@ class Pawn(Piece):
 
 
 class ShadowPawn(Piece):
+    def __get_movement(self):
+        return None
+
     def calculate_legal_moves(self, position):
         return None
 

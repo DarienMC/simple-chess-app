@@ -48,7 +48,7 @@ def initialize_standard_position():
     return standard_position
 
 
-def calculate_legal_moves(pieces, turn_index):
+def calculate_legal_moves():
     return []
 
 
@@ -63,12 +63,12 @@ class Position:
     def __init__(self):
         self.__position = initialize_standard_position()
         self.__turn_index = 0
-        self.__legal_moves = calculate_legal_moves(self.__position, self.__turn_index)
+        self.__legal_moves = calculate_legal_moves()
 
     def __init__(self, position, turn_index):
         self.__position = position
         self.__turn_index = turn_index
-        self.__legal_moves = calculate_legal_moves(position, turn_index)
+        self.__legal_moves = calculate_legal_moves()
 
     # Getters & Setters
     def get_in_check(self):
