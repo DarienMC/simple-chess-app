@@ -1,6 +1,6 @@
 from enum import Enum
-import Position, Move, Player
-import numpy as np
+
+import Position
 
 
 class GameState(Enum):

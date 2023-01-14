@@ -1,5 +1,6 @@
 import numpy as np
-import Piece, Move
+
+import Piece
 
 
 def initialize_standard_position():
