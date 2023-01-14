@@ -1,7 +1,9 @@
 """
 The app.py module is the pseudo-entry point of our project.
 """
-import model
+from model.Game import Game
+from model.Player import Player
+
 
 def run():
     player1 = Player('White')

@@ -169,7 +169,7 @@ class Pawn(Piece):
                 return {
                     (0,-1)
                 }
-            
+
     def calculate_legal_moves(self, position):
         pass
 
