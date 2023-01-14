@@ -6,6 +6,10 @@ class Piece(ABC):
     __has_moved = False
 
     @abstractmethod
+    def __get_movement(self):
+        pass
+
+    @abstractmethod
     def calculate_legal_moves(self, position):
         pass
 
@@ -24,6 +28,18 @@ class Piece(ABC):
 
 
 class King(Piece):
+    def __get_movement(self):
+        return {
+            (0,1),
+            (1,1),
+            (1,0),
+            (1,-1),
+            (0,-1),
+            (-1,-1),
+            (-1,0),
+            (-1,1)
+        }
+
     def calculate_legal_moves(self, position):
         pass
 
@@ -38,6 +54,18 @@ class King(Piece):
 
 
 class Queen(Piece):
+    def __get_movement(self):
+        return {
+            (0,1), (0,2), (0,3), (0,4), (0,5), (0,6), (0,7),
+            (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (7,7),
+            (1,0), (2,0), (3,0), (4,0), (5,0), (6,0), (7,0),
+            (1,-1),(2,-2), (3,-3), (4,-4), (5,-5), (6,-6), (7,-7),
+            (0,-1),(0,-2), (0,-3), (0,-4), (0,-5), (0,-6), (0,-7),
+            (-1,-1),(-2,-2), (-3,-3), (-4,-4), (-5,-5), (-6,-6), (-7,-7),
+            (-1,0),(-2,0), (-3,0), (-4,0), (-5,0), (-6,0), (-7,0),
+            (-1,1), (-2,2), (-3,3), (-4,4), (-5,5), (-6,6), (-7,7)
+        }
+
     def calculate_legal_moves(self, position):
         pass
 
@@ -52,6 +80,14 @@ class Queen(Piece):
 
 
 class Rook(Piece):
+    def __get_movement(self):
+        return {
+            (0,1), (0,2), (0,3), (0,4), (0,5), (0,6), (0,7),
+            (1,0), (2,0), (3,0), (4,0), (5,0), (6,0), (7,0),
+            (0,-1),(0,-2), (0,-3), (0,-4), (0,-5), (0,-6), (0,-7),
+            (-1,0),(-2,0), (-3,0), (-4,0), (-5,0), (-6,0), (-7,0),
+        }
+
     def calculate_legal_moves(self, position):
         pass
 
@@ -66,6 +102,14 @@ class Rook(Piece):
 
 
 class Bishop(Piece):
+    def __get_movement(self):
+        return {
+            (1,1), (2,2), (3,3), (4,4), (5,5), (6,6), (7,7),
+            (1,-1),(2,-2), (3,-3), (4,-4), (5,-5), (6,-6), (7,-7),
+            (-1,-1),(-2,-2), (-3,-3), (-4,-4), (-5,-5), (-6,-6), (-7,-7),
+            (-1,1), (-2,2), (-3,3), (-4,4), (-5,5), (-6,6), (-7,7)
+        }
+
     def calculate_legal_moves(self, position):
         pass
 
@@ -80,6 +124,18 @@ class Bishop(Piece):
 
 
 class Knight(Piece):
+    def __get_movement(self):
+        return {
+            (2,1),
+            (1,2),
+            (-1,2),
+            (-2,1),
+            (-2,-1),
+            (-1,-2),
+            (1,-2),
+            (2, -1),
+        }
+
     def calculate_legal_moves(self, position):
         pass
 
@@ -94,6 +150,26 @@ class Knight(Piece):
 
 
 class Pawn(Piece):
+    def __get_movement(self):
+        if (self.__color is 0):
+            if (self.__has_moved is False):
+                return {
+                    (0,1), (0,2)
+                }
+            else:
+                return {
+                    (0,1)
+                }
+        elif (self.__color is 1):
+            if (self.__has_moved is False):
+                return {
+                    (0,-1), (0,-2)
+                }
+            else:
+                return {
+                    (0,-1)
+                }
+            
     def calculate_legal_moves(self, position):
         pass
 
