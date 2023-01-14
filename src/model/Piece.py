@@ -3,7 +3,7 @@ import Position, Move
 
 class Piece(ABC):
     # Class attributes
-    has_moved = False
+    __has_moved = False
 
     @abstractmethod
     def calculate_legal_moves(self, position):
@@ -19,8 +19,8 @@ class Piece(ABC):
 
     # Constructor
     def __init__(self, color, occupied_square):
-        self.color = color
-        self.occupied_square = occupied_square
+        self.__color = color
+        self.__occupied_square = occupied_square
 
 
 class King(Piece):
@@ -28,7 +28,7 @@ class King(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♔'
         else:
             return '♚'
@@ -42,7 +42,7 @@ class Queen(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♕'
         else:
             return '♛'
@@ -56,7 +56,7 @@ class Rook(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♖'
         else:
             return '♜'
@@ -70,7 +70,7 @@ class Bishop(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♗'
         else:
             return '♝'
@@ -84,7 +84,7 @@ class Knight(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♘'
         else:
             return '♞'
@@ -98,7 +98,7 @@ class Pawn(Piece):
         pass
 
     def get_unicode(self):
-        if self.color is 0:
+        if self.__color is 0:
             return '♙'
         else:
             return '♟︎'

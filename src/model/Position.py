@@ -49,10 +49,10 @@ def initialize_standard_position():
 
 class Position:
     # Class attributes
-    columns = 8
-    rows = 8
-    in_check = False
-    legal_moves = None
+    __columns = 8
+    __rows = 8
+    __in_check = False
+    __legal_moves = None
 
     def calculate_legal_moves(self, pieces, turn_index):
         pass
@@ -60,11 +60,11 @@ class Position:
 
     # Constructor
     def __init__(self):
-        self.position = initialize_standard_position()
-        self.turn_index = 0
-        self.legal_moves = calculate_legal_moves(self.position, self.turn_index)
+        self.__position = initialize_standard_position()
+        self.__turn_index = 0
+        self.__legal_moves = calculate_legal_moves(self.__position, self.__turn_index)
 
     def __init__(self, position, turn_index):
-        self.position = position
-        self.turn_index = turn_index
-        self.legal_moves = calculate_legal_moves(position, turn_index)
+        self.__position = position
+        self.__turn_index = turn_index
+        self.__legal_moves = calculate_legal_moves(position, turn_index)
