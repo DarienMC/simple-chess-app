@@ -4,7 +4,7 @@ import Piece, Move
 
 def initialize_standard_position():
     # empty board
-    standard_position = np.empty([columns, rows],dtype=Piece)
+    standard_position = np.empty([columns, rows],dtype=None)
 
     # white pieces
     standard_position[0][0] = Rook  (0, (0,0))
@@ -35,14 +35,14 @@ def initialize_standard_position():
     standard_position[7][6] = Knight(1, (7,6))
     standard_position[7][7] = Rook  (1, (7,7))
 
-    standard_position[6][0] = Pawn(1, (7,0))
-    standard_position[6][1] = Pawn(1, (7,1))
-    standard_position[6][2] = Pawn(1, (7,2))
-    standard_position[6][3] = Pawn(1, (7,3))
-    standard_position[6][4] = Pawn(1, (7,4))
-    standard_position[6][5] = Pawn(1, (7,5))
-    standard_position[6][6] = Pawn(1, (7,6))
-    standard_position[6][7] = Pawn(1, (7,7))
+    standard_position[6][0] = Pawn(1, (6,0))
+    standard_position[6][1] = Pawn(1, (6,1))
+    standard_position[6][2] = Pawn(1, (6,2))
+    standard_position[6][3] = Pawn(1, (6,3))
+    standard_position[6][4] = Pawn(1, (6,4))
+    standard_position[6][5] = Pawn(1, (6,5))
+    standard_position[6][6] = Pawn(1, (6,6))
+    standard_position[6][7] = Pawn(1, (6,7))
 
     return standard_position
 
