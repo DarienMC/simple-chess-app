@@ -1,6 +1,6 @@
 from enum import Enum
 
-import Position
+from Position import Position
 
 
 class GameState(Enum):
@@ -33,7 +33,7 @@ def change_to_subsequent_position():
 
 class Game:
     __state = GameState.IN_PROGRESS
-    __current_position = Position.Position
+    __current_position = Position
     __moves = None
 
     def __init__(self, players):

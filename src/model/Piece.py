@@ -1,3 +1,4 @@
+import numpy as np
 from abc import ABC, abstractmethod
 
 
@@ -5,12 +6,12 @@ class Piece(ABC):
     # Class attributes
     __has_moved = False
 
-    @abstractmethod
-    def __get_movement(self):
-        pass
+    # Constructor
+    def __init__(self, color):
+        self.__color = color
 
     @abstractmethod
-    def calculate_legal_moves(self, position):
+    def get_movement(self):
         pass
 
     @abstractmethod
@@ -21,14 +22,22 @@ class Piece(ABC):
     def get_abbreviation(self):
         pass
 
-    # Constructor
-    def __init__(self, color, occupied_square):
+    # Getters & Setters
+    def get_color(self):
+        return self.__color
+
+    def set_color(self, color):
         self.__color = color
-        self.__occupied_square = occupied_square
+
+    def get_has_moved(self):
+        return self.__has_moved
+
+    def set_turn_index(self, has_moved):
+        self.__has_moved = has_moved
 
 
 class King(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         return {
             (0, 1),
             (1, 1),
@@ -39,9 +48,6 @@ class King(Piece):
             (-1, 0),
             (-1, 1)
         }
-
-    def calculate_legal_moves(self, position):
-        pass
 
     def get_unicode(self):
         if self.__color is 0:
@@ -54,20 +60,17 @@ class King(Piece):
 
 
 class Queen(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         return {
-            (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
-            (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
-            (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-            (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7),
-            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
-            (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
-            (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)
+            (0, np.inf),
+            (np.inf, np.inf),
+            (np.inf, 0),
+            (np.inf, -np.inf),
+            (0, -np.inf),
+            (-np.inf, -np.inf),
+            (-np.inf, 0),
+            (-np.inf, np.inf)
         }
-
-    def calculate_legal_moves(self, position):
-        pass
 
     def get_unicode(self):
         if self.__color is 0:
@@ -80,16 +83,13 @@ class Queen(Piece):
 
 
 class Rook(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         return {
-            (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7),
-            (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
-            (0, -1), (0, -2), (0, -3), (0, -4), (0, -5), (0, -6), (0, -7),
-            (-1, 0), (-2, 0), (-3, 0), (-4, 0), (-5, 0), (-6, 0), (-7, 0),
+            (0, np.inf),
+            (np.inf, 0),
+            (0, -np.inf),
+            (-np.inf, 0),
         }
-
-    def calculate_legal_moves(self, position):
-        pass
 
     def get_unicode(self):
         if self.__color is 0:
@@ -102,16 +102,13 @@ class Rook(Piece):
 
 
 class Bishop(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         return {
-            (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7),
-            (1, -1), (2, -2), (3, -3), (4, -4), (5, -5), (6, -6), (7, -7),
-            (-1, -1), (-2, -2), (-3, -3), (-4, -4), (-5, -5), (-6, -6), (-7, -7),
-            (-1, 1), (-2, 2), (-3, 3), (-4, 4), (-5, 5), (-6, 6), (-7, 7)
+            (np.inf, np.inf),
+            (np.inf, -np.inf),
+            (-np.inf, -np.inf),
+            (-np.inf, np.inf)
         }
-
-    def calculate_legal_moves(self, position):
-        pass
 
     def get_unicode(self):
         if self.__color is 0:
@@ -124,7 +121,7 @@ class Bishop(Piece):
 
 
 class Knight(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         return {
             (2, 1),
             (1, 2),
@@ -135,9 +132,6 @@ class Knight(Piece):
             (1, -2),
             (2, -1),
         }
-
-    def calculate_legal_moves(self, position):
-        pass
 
     def get_unicode(self):
         if self.__color is 0:
@@ -150,7 +144,7 @@ class Knight(Piece):
 
 
 class Pawn(Piece):
-    def __get_movement(self):
+    def get_movement(self):
         if self.__color is 0:
             if self.__has_moved is False:
                 return {
@@ -170,9 +164,6 @@ class Pawn(Piece):
                     (0, -1)
                 }
 
-    def calculate_legal_moves(self, position):
-        pass
-
     def get_unicode(self):
         if self.__color is 0:
             return '♙'
@@ -184,10 +175,7 @@ class Pawn(Piece):
 
 
 class ShadowPawn(Piece):
-    def __get_movement(self):
-        return None
-
-    def calculate_legal_moves(self, position):
+    def get_movement(self):
         return None
 
     def get_unicode(self):
