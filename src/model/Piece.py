@@ -10,6 +10,7 @@ class Piece(ABC):
     def __init__(self, color):
         self.__color = color
 
+    # Methods
     @abstractmethod
     def get_movement(self):
         pass
@@ -41,6 +42,7 @@ class Piece(ABC):
 
 
 class King(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return {
             (0, 1),
@@ -67,6 +69,7 @@ class King(Piece):
 
 
 class Queen(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return {
             (0, np.inf),
@@ -93,6 +96,7 @@ class Queen(Piece):
 
 
 class Rook(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return {
             (0, np.inf),
@@ -115,6 +119,7 @@ class Rook(Piece):
 
 
 class Bishop(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return {
             (np.inf, np.inf),
@@ -137,6 +142,7 @@ class Bishop(Piece):
 
 
 class Knight(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return {
             (2, 1),
@@ -163,6 +169,7 @@ class Knight(Piece):
 
 
 class Pawn(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         if self.__color is 0:
             if self.__has_moved is False:
@@ -204,6 +211,7 @@ class Pawn(Piece):
 
 
 class ShadowPawn(Piece):
+    # Implement Abstract Methods
     def get_movement(self):
         return None
 

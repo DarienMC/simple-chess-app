@@ -40,6 +40,7 @@ class Game:
     def __init__(self, players):
         self.__players = players
 
+    # Methods
     def play(self):
         while self.__state is GameState.IN_PROGRESS:
             if self.__current_position.get_legal_moves is not None:
