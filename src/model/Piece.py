@@ -15,6 +15,10 @@ class Piece(ABC):
         pass
 
     @abstractmethod
+    def get_capture_movement(self):
+        pass
+
+    @abstractmethod
     def get_unicode(self):
         pass
 
@@ -49,6 +53,9 @@ class King(Piece):
             (-1, 1)
         }
 
+    def get_capture_movement(self):
+        return self.get_movement()
+
     def get_unicode(self):
         if self.__color is 0:
             return '♔'
@@ -72,6 +79,9 @@ class Queen(Piece):
             (-np.inf, np.inf)
         }
 
+    def get_capture_movement(self):
+        return self.get_movement()
+
     def get_unicode(self):
         if self.__color is 0:
             return '♕'
@@ -88,8 +98,11 @@ class Rook(Piece):
             (0, np.inf),
             (np.inf, 0),
             (0, -np.inf),
-            (-np.inf, 0),
+            (-np.inf, 0)
         }
+
+    def get_capture_movement(self):
+        return self.get_movement()
 
     def get_unicode(self):
         if self.__color is 0:
@@ -109,6 +122,9 @@ class Bishop(Piece):
             (-np.inf, -np.inf),
             (-np.inf, np.inf)
         }
+
+    def get_capture_movement(self):
+        return self.get_movement()
 
     def get_unicode(self):
         if self.__color is 0:
@@ -130,8 +146,11 @@ class Knight(Piece):
             (-2, -1),
             (-1, -2),
             (1, -2),
-            (2, -1),
+            (2, -1)
         }
+
+    def get_capture_movement(self):
+        return self.get_movement()
 
     def get_unicode(self):
         if self.__color is 0:
@@ -164,6 +183,16 @@ class Pawn(Piece):
                     (0, -1)
                 }
 
+    def get_capture_movement(self):
+        if self.__color is 0:
+            return {
+                    (-1, 1), (1, 1)
+            }
+        elif self.__color is 1:
+            return {
+                    (-1, -1), (1, -1)
+            }
+
     def get_unicode(self):
         if self.__color is 0:
             return '♙'
@@ -176,6 +205,9 @@ class Pawn(Piece):
 
 class ShadowPawn(Piece):
     def get_movement(self):
+        return None
+
+    def get_capture_movement(self):
         return None
 
     def get_unicode(self):
