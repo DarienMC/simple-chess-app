@@ -1,50 +1,50 @@
 import numpy as np
 import math
 
-import Piece
+from Piece import *
 
 
-def initialize_standard_position():
+def generate_standard_position():
     # empty board
     standard_position = np.empty([8, 8], dtype=None)
 
     # white pieces
-    standard_position[0][0] = Piece.Rook(0)
-    standard_position[0][1] = Piece.Knight(0)
-    standard_position[0][2] = Piece.Bishop(0)
-    standard_position[0][3] = Piece.Queen(0)
-    standard_position[0][4] = Piece.King(0)
-    standard_position[0][5] = Piece.Bishop(0)
-    standard_position[0][6] = Piece.Knight(0)
-    standard_position[0][7] = Piece.Rook(0)
+    standard_position[0][0] = Rook(0)
+    standard_position[0][1] = Knight(0)
+    standard_position[0][2] = Bishop(0)
+    standard_position[0][3] = Queen(0)
+    standard_position[0][4] = King(0)
+    standard_position[0][5] = Bishop(0)
+    standard_position[0][6] = Knight(0)
+    standard_position[0][7] = Rook(0)
 
-    standard_position[1][0] = Piece.Pawn(0)
-    standard_position[1][1] = Piece.Pawn(0)
-    standard_position[1][2] = Piece.Pawn(0)
-    standard_position[1][3] = Piece.Pawn(0)
-    standard_position[1][4] = Piece.Pawn(0)
-    standard_position[1][5] = Piece.Pawn(0)
-    standard_position[1][6] = Piece.Pawn(0)
-    standard_position[1][7] = Piece.Pawn(0)
+    standard_position[1][0] = Pawn(0)
+    standard_position[1][1] = Pawn(0)
+    standard_position[1][2] = Pawn(0)
+    standard_position[1][3] = Pawn(0)
+    standard_position[1][4] = Pawn(0)
+    standard_position[1][5] = Pawn(0)
+    standard_position[1][6] = Pawn(0)
+    standard_position[1][7] = Pawn(0)
 
     # black pieces
-    standard_position[7][0] = Piece.Rook(1)
-    standard_position[7][1] = Piece.Knight(1)
-    standard_position[7][2] = Piece.Bishop(1)
-    standard_position[7][3] = Piece.Queen(1)
-    standard_position[7][4] = Piece.King(1)
-    standard_position[7][5] = Piece.Bishop(1)
-    standard_position[7][6] = Piece.Knight(1)
-    standard_position[7][7] = Piece.Rook(1)
+    standard_position[7][0] = Rook(1)
+    standard_position[7][1] = Knight(1)
+    standard_position[7][2] = Bishop(1)
+    standard_position[7][3] = Queen(1)
+    standard_position[7][4] = King(1)
+    standard_position[7][5] = Bishop(1)
+    standard_position[7][6] = Knight(1)
+    standard_position[7][7] = Rook(1)
 
-    standard_position[6][0] = Piece.Pawn(1)
-    standard_position[6][1] = Piece.Pawn(1)
-    standard_position[6][2] = Piece.Pawn(1)
-    standard_position[6][3] = Piece.Pawn(1)
-    standard_position[6][4] = Piece.Pawn(1)
-    standard_position[6][5] = Piece.Pawn(1)
-    standard_position[6][6] = Piece.Pawn(1)
-    standard_position[6][7] = Piece.Pawn(1)
+    standard_position[6][0] = Pawn(1)
+    standard_position[6][1] = Pawn(1)
+    standard_position[6][2] = Pawn(1)
+    standard_position[6][3] = Pawn(1)
+    standard_position[6][4] = Pawn(1)
+    standard_position[6][5] = Pawn(1)
+    standard_position[6][6] = Pawn(1)
+    standard_position[6][7] = Pawn(1)
 
     return standard_position
 
@@ -62,16 +62,22 @@ class Position:
 
     # Constructor
     def __init__(self):
-        self.__position = initialize_standard_position()
+        self.__board = generate_standard_position()
         self.__turn_index = 0
         self.__legal_moves = calculate_legal_moves()
 
-    def __init__(self, position, turn_index):
-        self.__position = position
+    def __init__(self, board, turn_index):
+        self.__board = board
         self.__turn_index = turn_index
         self.__legal_moves = calculate_legal_moves()
 
     # Getters & Setters
+    def get_board(self):
+        return self.__board
+
+    def set_board(self, board):
+        self.__board = board
+
     def get_in_check(self):
         return self.__in_check
 
