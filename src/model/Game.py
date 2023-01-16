@@ -36,6 +36,7 @@ class Game:
     __current_position = Position
     __moves = None
 
+    # Constructor
     def __init__(self, players):
         self.__players = players
 
@@ -52,3 +53,28 @@ class Game:
                         self.__state = GameState.BLACK_WINS
                 else:
                     self.__state = GameState.DRAW
+
+    # Getters & Setters
+    def get_state(self):
+        return self.__state
+
+    def set_state(self, state):
+        self.__state = state
+
+    def get_current_position(self):
+        return self.__current_position
+
+    def set_current_position(self, current_position):
+        self.__current_position = current_position
+
+    def get_moves(self):
+        return self.__moves
+
+    def set_moves(self, moves):
+        self.__moves = moves
+
+    def get_players(self):
+        return self.__players
+
+    def set_players(self, players):
+        self.__players = players
