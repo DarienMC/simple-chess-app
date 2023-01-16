@@ -10,23 +10,6 @@ class GameState(Enum):
     DRAW = 4
 
 
-def print_current_position_as_text():
-    print(
-        '    a   b   c   d   e   f   g   h    '
-        '  =================================  '
-        '8 | R | N | B | Q | K | B | N | R | 8'
-        '7 | P | P | P | P | P | P | P | P | 7'
-        '6 |   |   |   |   |   |   |   |   | 6'
-        '5 |   |   |   |   |   |   |   |   | 5'
-        '4 |   |   |   |   |   |   |   |   | 4'
-        '3 |   |   |   |   |   |   |   |   | 3'
-        '2 | P | P | P | P | P | P | P | P | 2'
-        '1 | R | N | B | Q | K | B | N | R | 1'
-        '  =================================  '
-        '    a   b   c   d   e   f   g   h    '
-    )
-
-
 def change_to_subsequent_position():
     return Position
 
