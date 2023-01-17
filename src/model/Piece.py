@@ -3,12 +3,10 @@ from abc import ABC, abstractmethod
 
 
 class Piece(ABC):
-    # Class attributes
-    __has_moved = False
-
     # Constructor
-    def __init__(self, color):
+    def __init__(self, color, has_moved=False):
         self.__color = color
+        self.__has_moved = has_moved
 
     # Methods
     @abstractmethod

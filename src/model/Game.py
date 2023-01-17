@@ -15,13 +15,12 @@ class GameState(Enum):
 
 
 class Game:
-    __state = GameState.IN_PROGRESS
-    __current_position = Position()
-    __moves = None
-
     # Constructor
-    def __init__(self, players):
+    def __init__(self, players, current_position=Position(), state=GameState.IN_PROGRESS, moves=None):
         self.__players = players
+        self.__current_position = current_position
+        self.__state = state
+        self.__moves = moves
 
     # Methods
     # def play(self):

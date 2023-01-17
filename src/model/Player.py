@@ -1,10 +1,8 @@
 class Player:
-    # Class attributes
-    __elo = 1000
-
     # Constructor
-    def __init__(self, name):
+    def __init__(self, name, elo=1000):
         self.__name = name
+        self.__elo = elo
 
     # Getters & Setters
     def get_elo(self):

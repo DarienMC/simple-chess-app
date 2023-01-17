@@ -1,5 +1,4 @@
 class Move:
-
     # Constructor
     def __init__(self, piece, destination_square):
         self.__piece = piece

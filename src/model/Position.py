@@ -53,16 +53,16 @@ def calculate_legal_moves():
     return []
 
 
-class Position:
-    # Class attributes
-    __columns = 8
-    __rows = 8
-    __in_check = False
+def determine_in_check():
+    return False
 
+
+class Position:
     # Constructor
-    def __init__(self):
+    def __init__(self, turn_index=0):
+        self.__turn_index = turn_index
         self.__board = generate_standard_position()
-        self.__turn_index = 0
+        self.__in_check = determine_in_check()
         self.__legal_moves = calculate_legal_moves()
 
     # Methods
