@@ -67,15 +67,17 @@ class Position:
 
     # Methods
     def print_board(self):
+        num_files = len(self.__board)
+        num_ranks = len(self.__board[0])
         text = \
-            '    0   1   2   3   4   5   6   7    \n' \
+            '    a   b   c   d   e   f   g   h    \n' \
             '  =================================  '
-        for i in range(len(self.__board)):
+        for i in range(num_files):
             text = f'{text}\n' \
-                   f'{i} |'
-            for j in range(len(self.__board[i])):
-                if isinstance(self.__board[i][j], Piece):
-                    text = f'{text} {self.__board[i][j].get_unicode()} |'
+                   f'{num_files-i} |'
+            for j in range(num_ranks):
+                if isinstance(self.__board[num_files-1-i][j], Piece):
+                    text = f'{text} {self.__board[num_files-1-i][j].get_unicode()} |'
                 else:
                     text = f'{text}   |'
 
