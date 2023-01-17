@@ -1,12 +1,12 @@
 import numpy as np
 import math
 
-from Piece import *
+from model.Piece import *
 
 
 def generate_standard_position():
     # empty board
-    standard_position = np.empty([8, 8], dtype=None)
+    standard_position = np.empty([8, 8], dtype=Piece)
 
     # white pieces
     standard_position[0][0] = Rook(0)
@@ -50,7 +50,7 @@ def generate_standard_position():
 
 
 def calculate_legal_moves():
-    return []
+    return None
 
 
 class Position:
@@ -58,7 +58,6 @@ class Position:
     __columns = 8
     __rows = 8
     __in_check = False
-    __legal_moves = None
 
     # Constructor
     def __init__(self):
@@ -66,27 +65,24 @@ class Position:
         self.__turn_index = 0
         self.__legal_moves = calculate_legal_moves()
 
-    def __init__(self, board, turn_index):
-        self.__board = board
-        self.__turn_index = turn_index
-        self.__legal_moves = calculate_legal_moves()
-
     # Methods
-    def print_board_as_text(self):
-        print(
-            '    a   b   c   d   e   f   g   h    '
+    def print_board(self):
+        text = \
+            '    a   b   c   d   e   f   g   h    \n' \
             '  =================================  '
-            '8 | R | N | B | Q | K | B | N | R | 8'
-            '7 | P | P | P | P | P | P | P | P | 7'
-            '6 |   |   |   |   |   |   |   |   | 6'
-            '5 |   |   |   |   |   |   |   |   | 5'
-            '4 |   |   |   |   |   |   |   |   | 4'
-            '3 |   |   |   |   |   |   |   |   | 3'
-            '2 | P | P | P | P | P | P | P | P | 2'
-            '1 | R | N | B | Q | K | B | N | R | 1'
-            '  =================================  '
-            '    a   b   c   d   e   f   g   h    '
-        )
+        for j in range(len(self.__board)):
+            text = f'{text}\n' \
+                   f'{j} |'
+            for i in range(len(self.__board[j])):
+                if isinstance(self.__board[j][i], Piece):
+                    text = f'{text} {self.__board[j][i].get_abbreviation()} |'
+                else:
+                    text = f'{text}   |'
+
+        text = f'{text}\n' \
+               f'  =================================  \n'
+
+        print(f'{text}', flush=True)
 
     # Getters & Setters
     def get_board(self):
@@ -112,4 +108,3 @@ class Position:
 
     def set_legal_moves(self, legal_moves):
         self.__legal_moves = legal_moves
-

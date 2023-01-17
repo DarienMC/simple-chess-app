@@ -59,7 +59,7 @@ class King(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♔'
         else:
             return '♚'
@@ -86,7 +86,7 @@ class Queen(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♕'
         else:
             return '♛'
@@ -109,7 +109,7 @@ class Rook(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♖'
         else:
             return '♜'
@@ -132,7 +132,7 @@ class Bishop(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♗'
         else:
             return '♝'
@@ -159,7 +159,7 @@ class Knight(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♘'
         else:
             return '♞'
@@ -171,7 +171,7 @@ class Knight(Piece):
 class Pawn(Piece):
     # Implement Abstract Methods
     def get_movement(self):
-        if self.__color is 0:
+        if self.__color == 0:
             if self.__has_moved is False:
                 return {
                     (0, 1), (0, 2)
@@ -180,7 +180,7 @@ class Pawn(Piece):
                 return {
                     (0, 1)
                 }
-        elif self.__color is 1:
+        elif self.__color == 1:
             if self.__has_moved is False:
                 return {
                     (0, -1), (0, -2)
@@ -191,17 +191,17 @@ class Pawn(Piece):
                 }
 
     def get_capture_movement(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return {
                     (-1, 1), (1, 1)
             }
-        elif self.__color is 1:
+        elif self.__color == 1:
             return {
                     (-1, -1), (1, -1)
             }
 
     def get_unicode(self):
-        if self.__color is 0:
+        if self.__color == 0:
             return '♙'
         else:
             return '♟︎'
@@ -222,4 +222,4 @@ class ShadowPawn(Piece):
         return None
 
     def get_abbreviation(self):
-        return None
+        return ' '
