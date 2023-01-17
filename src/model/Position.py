@@ -50,7 +50,7 @@ def generate_standard_position():
 
 
 def calculate_legal_moves():
-    return None
+    return []
 
 
 class Position:
