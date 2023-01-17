@@ -13,19 +13,19 @@ class Piece(ABC):
     # Methods
     @abstractmethod
     def get_movement(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def get_capture_movement(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def get_unicode(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def get_abbreviation(self):
-        pass
+        raise NotImplementedError
 
     # Getters & Setters
     def get_color(self):
@@ -37,7 +37,7 @@ class Piece(ABC):
     def get_has_moved(self):
         return self.__has_moved
 
-    def set_turn_index(self, has_moved):
+    def set_has_moved(self, has_moved):
         self.__has_moved = has_moved
 
 
@@ -59,7 +59,7 @@ class King(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♔'
         else:
             return '♚'
@@ -86,7 +86,7 @@ class Queen(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♕'
         else:
             return '♛'
@@ -109,7 +109,7 @@ class Rook(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♖'
         else:
             return '♜'
@@ -132,7 +132,7 @@ class Bishop(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♗'
         else:
             return '♝'
@@ -159,7 +159,7 @@ class Knight(Piece):
         return self.get_movement()
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♘'
         else:
             return '♞'
@@ -171,8 +171,8 @@ class Knight(Piece):
 class Pawn(Piece):
     # Implement Abstract Methods
     def get_movement(self):
-        if self.__color == 0:
-            if self.__has_moved is False:
+        if self.get_color() == 0:
+            if self.get_has_moved() is False:
                 return {
                     (0, 1), (0, 2)
                 }
@@ -180,8 +180,8 @@ class Pawn(Piece):
                 return {
                     (0, 1)
                 }
-        elif self.__color == 1:
-            if self.__has_moved is False:
+        elif self.get_color() == 1:
+            if self.get_has_moved() is False:
                 return {
                     (0, -1), (0, -2)
                 }
@@ -191,17 +191,17 @@ class Pawn(Piece):
                 }
 
     def get_capture_movement(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return {
                     (-1, 1), (1, 1)
             }
-        elif self.__color == 1:
+        elif self.get_color() == 1:
             return {
                     (-1, -1), (1, -1)
             }
 
     def get_unicode(self):
-        if self.__color == 0:
+        if self.get_color() == 0:
             return '♙'
         else:
             return '♟︎'
@@ -219,7 +219,7 @@ class ShadowPawn(Piece):
         return None
 
     def get_unicode(self):
-        return None
+        return ' '
 
     def get_abbreviation(self):
         return ' '

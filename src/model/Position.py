@@ -68,21 +68,21 @@ class Position:
     # Methods
     def print_board(self):
         text = \
-            '    a   b   c   d   e   f   g   h    \n' \
+            '    0   1   2   3   4   5   6   7    \n' \
             '  =================================  '
-        for j in range(len(self.__board)):
+        for i in range(len(self.__board)):
             text = f'{text}\n' \
-                   f'{j} |'
-            for i in range(len(self.__board[j])):
-                if isinstance(self.__board[j][i], Piece):
-                    text = f'{text} {self.__board[j][i].get_abbreviation()} |'
+                   f'{i} |'
+            for j in range(len(self.__board[i])):
+                if isinstance(self.__board[i][j], Piece):
+                    text = f'{text} {self.__board[i][j].get_unicode()} |'
                 else:
                     text = f'{text}   |'
 
         text = f'{text}\n' \
                f'  =================================  \n'
 
-        print(f'{text}', flush=True)
+        print(f'{text}')
 
     # Getters & Setters
     def get_board(self):
