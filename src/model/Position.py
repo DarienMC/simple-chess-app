@@ -10,41 +10,41 @@ def generate_standard_position():
 
     # white pieces
     standard_position[0][0] = Rook(0)
-    standard_position[0][1] = Knight(0)
-    standard_position[0][2] = Bishop(0)
-    standard_position[0][3] = Queen(0)
-    standard_position[0][4] = King(0)
-    standard_position[0][5] = Bishop(0)
-    standard_position[0][6] = Knight(0)
-    standard_position[0][7] = Rook(0)
+    standard_position[1][0] = Knight(0)
+    standard_position[2][0] = Bishop(0)
+    standard_position[3][0] = Queen(0)
+    standard_position[4][0] = King(0)
+    standard_position[5][0] = Bishop(0)
+    standard_position[6][0] = Knight(0)
+    standard_position[7][0] = Rook(0)
 
-    standard_position[1][0] = Pawn(0)
+    standard_position[0][1] = Pawn(0)
     standard_position[1][1] = Pawn(0)
-    standard_position[1][2] = Pawn(0)
-    standard_position[1][3] = Pawn(0)
-    standard_position[1][4] = Pawn(0)
-    standard_position[1][5] = Pawn(0)
-    standard_position[1][6] = Pawn(0)
-    standard_position[1][7] = Pawn(0)
+    standard_position[2][1] = Pawn(0)
+    standard_position[3][1] = Pawn(0)
+    standard_position[4][1] = Pawn(0)
+    standard_position[5][1] = Pawn(0)
+    standard_position[6][1] = Pawn(0)
+    standard_position[7][1] = Pawn(0)
 
     # black pieces
-    standard_position[7][0] = Rook(1)
-    standard_position[7][1] = Knight(1)
-    standard_position[7][2] = Bishop(1)
-    standard_position[7][3] = Queen(1)
-    standard_position[7][4] = King(1)
-    standard_position[7][5] = Bishop(1)
-    standard_position[7][6] = Knight(1)
+    standard_position[0][7] = Rook(1)
+    standard_position[1][7] = Knight(1)
+    standard_position[2][7] = Bishop(1)
+    standard_position[3][7] = Queen(1)
+    standard_position[4][7] = King(1)
+    standard_position[5][7] = Bishop(1)
+    standard_position[6][7] = Knight(1)
     standard_position[7][7] = Rook(1)
 
-    standard_position[6][0] = Pawn(1)
-    standard_position[6][1] = Pawn(1)
-    standard_position[6][2] = Pawn(1)
-    standard_position[6][3] = Pawn(1)
-    standard_position[6][4] = Pawn(1)
-    standard_position[6][5] = Pawn(1)
+    standard_position[0][6] = Pawn(1)
+    standard_position[1][6] = Pawn(1)
+    standard_position[2][6] = Pawn(1)
+    standard_position[3][6] = Pawn(1)
+    standard_position[4][6] = Pawn(1)
+    standard_position[5][6] = Pawn(1)
     standard_position[6][6] = Pawn(1)
-    standard_position[6][7] = Pawn(1)
+    standard_position[7][6] = Pawn(1)
 
     return standard_position
 
@@ -72,12 +72,12 @@ class Position:
         text = \
             '    a   b   c   d   e   f   g   h    \n' \
             '  =================================  '
-        for i in range(num_files):
+        for i in range(num_ranks):
             text = f'{text}\n' \
                    f'{num_files-i} |'
-            for j in range(num_ranks):
-                if isinstance(self.__board[num_files-1-i][j], Piece):
-                    text = f'{text} {self.__board[num_files-1-i][j].get_unicode()} |'
+            for j in range(num_files):
+                if isinstance(self.__board[j][i], Piece):
+                    text = f'{text} {self.__board[j][i].get_unicode()} |'
                 else:
                     text = f'{text}   |'
 
