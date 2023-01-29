@@ -48,10 +48,8 @@ def generate_standard_position():
 
     return standard_position
 
-
 def calculate_legal_moves():
     return []
-
 
 def determine_in_check():
     return False
@@ -62,10 +60,36 @@ class Position:
     def __init__(self, turn_index=0):
         self.__turn_index = turn_index
         self.__board = generate_standard_position()
+        self.__attacked_squares = np.zeros([8, 8])
+        self.__defended_squares = np.zeros([8, 8])
         self.__in_check = determine_in_check()
         self.__legal_moves = calculate_legal_moves()
 
     # Methods
+    def calculate_attacked_and_defended_squares(self):
+        num_files = len(self.__board)
+        num_ranks = len(self.__board[0])
+
+        attacked_squares = np.zeros([num_files, num_ranks])
+        defended_squares = np.zeros([num_files, num_ranks])
+
+        for i in range(num_ranks):
+            for j in range(num_files):
+                piece = self.__board[j][i]
+                if isinstance(piece, Piece):
+                    # if it's the current player's piece...
+                    if piece.get_color() == self.__turn_index:
+                        # ... then calculate defended squares
+                        defended_squares[0][0] = 0
+                    # else (if it's another player's piece) ...
+                    else:
+                        # ... then calculate defended squares
+                        attacked_squares[0][0] = 0
+
+        # set this position's attacked and defended squares
+        self.__defended_squares = defended_squares
+        self.__attacked_squares = attacked_squares
+
     def print_board(self):
         num_files = len(self.__board)
         num_ranks = len(self.__board[0])
